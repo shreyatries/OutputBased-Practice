@@ -1,0 +1,1 @@
+### This will consist of all my learnings so far for solving quick output based questions
