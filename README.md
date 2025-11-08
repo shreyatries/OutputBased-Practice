@@ -71,6 +71,7 @@
         import cloneDeep from 'lodash.clonedeep'
         const copy= cloneDeep(obj)
         ```
+        
     7. ## Sorting
     Sorting by comparing, actually compares the numbers and gives us the actual output we need
     But sorting using the default `arr.sort()` method actually convert it to UTF-16 hence the sorting is not as expected
