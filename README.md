@@ -173,7 +173,7 @@
     
     <details>
     <summary> Output and Reasoning </summary>
-    Output : Aman Bhoria
+    Output : Shreya Das
     Reason :In non-strict mode, the arguments object (an array-like object) holds the values passed to the function. When you change the function parameters, the corresponding values in the arguments object are updated as well. In strict mode, this link is removed. As a result, function prints the original values that were passed.
     </details>
     
