@@ -1,4 +1,4 @@
-### This will consist of all my learnings so far for solving quick output based questions
+# This will consist of all my learnings so far for solving quick output based questions
 
 1. when length of array is set to 0, the array becomes empty, which means o/p is []
 2. when we assign an object ex a={x,y} to a variable b. we are also passing the reference to the location.
@@ -67,12 +67,13 @@
     
     -You can use polyfill like core-js, which adds structuredClone() globally
     -fall back to libraries like 
+
         ```
         import cloneDeep from 'lodash.clonedeep'
         const copy= cloneDeep(obj)
         ```
-        
-    7. ## Sorting
+
+    7. ### Sorting
     Sorting by comparing, actually compares the numbers and gives us the actual output we need
     But sorting using the default `arr.sort()` method actually convert it to UTF-16 hence the sorting is not as expected
 
@@ -84,3 +85,23 @@
     here it will o/p -1, 2, 10 for this but 
     -1, 10, 2 for **arr.sort()**    
     
+    8.  filter(Boolean) removes all falsy values `(0, "" (empty string), false, null, undefined, and NaN)` from the array and keeps truthy ones.
+
+    9. The below code will give a bit more insight into object destructuring 
+
+    ```
+    const user={
+    firstName: 'Shreya',
+    country: 'India'
+}
+var {firstName: fullName, country, lastName= 'Das', fullName= 'Bloom'}= user
+console.log(fullName)
+console.log(lastName)
+```
+
+| Pattern              | Property Exists? | Assigned Value | Result Variable      |
+|---------------------:|------------------|----------------|----------------------|
+|`firstName: fullName` |[x] Yes("Shreya") | "Shreya"       | `fullName= "Shreya"` |
+| `country`            |[x] Yes("India")  | "India"        | `country= "India"`   |
+|`lastName = 'Das'`    |[ ] No            | 'Das'          | `lastName= 'Das'`    |
+|`fullName = 'Bloom'`  |[ ] No            | 'Bloom'        | `fullName = "Bloom"` |

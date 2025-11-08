@@ -33,3 +33,13 @@ const arr2 = [1,2,3];
 const str = ["1,2,3"];
 console.log(arr1 == str);
 console.log(arr1 == arr2);
+
+//--------------------------------------------------------------------------------------------------------------------------//
+
+const user={
+    firstName: 'Shreya',
+    country: 'India'
+}
+var {firstName: fullName, country, lastName= 'Das', fullName= 'Bloom'}= user
+console.log(fullName)
+console.log(lastName)
