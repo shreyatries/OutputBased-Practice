@@ -150,29 +150,32 @@
     11. 
     ```
     let a = {};
-        let b = { key: "abc" };
-    let c = { key: "efg" };
+    let b = { key: "ab" };
+    let c = { key: "ac" };
 
-    a[b] = 111;
-    a[c] = 222;
+    a[b] = 5;
+    a[c] = 10;
     console.log(a[b]);
     ```
-    :In JavaScript, using an object as a key in a normal object turns it into a string. That string is usually "[object Object]". So, two different objects like b and c become the same key -> a[b] = 111 & a[c] = 222 becomes a["[object Object]"] = 111 & a["[object Object]"] = 222. Hence, the second value (222) replaces the first one. 
+    An object as a key turns the key into a string, which is "[object Object]". So, two different objects like **b and c become the same key** -> a[b] = 5 & a[c] = 10 becomes `a["[object Object]"] = 5` & `a["[object Object]"] = 10`. Hence, the second value (10) replaces the first one. 
 
-    12. <summary>
+    12.
     ```
     function printName(firstName, lastName) {
-    firstName = "Aman";
-    lastName = "Bhoria";
+    firstName = "Shreya";
+    lastName = "Das";
     return arguments[0] + " " + arguments[1];
     }
 
-    let name = printName("John", "Doe");
+    let name = printName("Some", "Name");
     console.log(name)
     ```
     
     <details>
+    <summary> Output and Reasoning </summary>
     Output : Aman Bhoria
     Reason :In non-strict mode, the arguments object (an array-like object) holds the values passed to the function. When you change the function parameters, the corresponding values in the arguments object are updated as well. In strict mode, this link is removed. As a result, function prints the original values that were passed.
     </details>
-    </summary>
+    
+    ---
+    >I had fun learning so much about objects through this. 
