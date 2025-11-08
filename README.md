@@ -93,15 +93,86 @@
     const user={
     firstName: 'Shreya',
     country: 'India'
-}
-var {firstName: fullName, country, lastName= 'Das', fullName= 'Bloom'}= user
-console.log(fullName)
-console.log(lastName)
-```
+    }
+    var {firstName: fullName, country, lastName= 'Das', fullName= 'Bloom'}= user
+    console.log(fullName)
+    console.log(lastName)
+    ```
 
-| Pattern              | Property Exists? | Assigned Value | Result Variable      |
-|---------------------:|------------------|----------------|----------------------|
-|`firstName: fullName` |[x] Yes("Shreya") | "Shreya"       | `fullName= "Shreya"` |
-| `country`            |[x] Yes("India")  | "India"        | `country= "India"`   |
-|`lastName = 'Das'`    |[ ] No            | 'Das'          | `lastName= 'Das'`    |
-|`fullName = 'Bloom'`  |[ ] No            | 'Bloom'        | `fullName = "Bloom"` |
+    | Pattern            | Property Exists? | Assigned Value | Result Variable    |
+    |-------------------:|------------------|----------------|--------------------|
+    |firstName: fullName |Yes("Shreya")     | "Shreya"       | fullName= "Shreya" |
+    |country            |Yes("India")      | "India"        | country= "India"   | 
+    |lastName = 'Das'    |No                | 'Das'          | lastName= 'Das'    |
+    |fullName = 'Bloom'  |No                | 'Bloom'        | fullName = "Bloom" |
+
+    JavaScript executes destructuring from left to right.
+    Each binding happens in sequence.
+
+    So by the time the rightmost fullName = 'Bloom' runs, it simply reassigns the variable fullName — it doesn’t care that you already used the same name earlier in the pattern.
+
+    -Fix?
+
+    ```
+    var { firstName: fullName = 'Bloom', country, lastName = 'Das' } = user;
+    console.log(fullName);  // "Shreya"
+    ```
+
+    Similar,
+
+    ```
+    let a={ x:1, y: {alpha:10,beta:20} };
+    let b = {...a};
+
+    b.x=101;
+    b.y.alpha=1001;
+
+    console.log(a.x); // 1
+    console.log(a.y.alpha); //1001
+    ```
+
+    here a and be for deep nesting will point to the same object
+
+    10. 
+    ```
+    const user = {
+    name: 'Aman Bhoria!',
+    logMessage() {
+        console.log(this.name); // What is logged? 
+    }
+    }; 
+    setTimeout(user.logMessage, 1000);
+    ```
+
+    The output will be undefined as we are passing the reference inside setTimeout,.
+    Correct way, is passing callback: setTimeout(()=> user.logMessage(), 1000)
+
+    11. 
+    ```
+    let a = {};
+        let b = { key: "abc" };
+    let c = { key: "efg" };
+
+    a[b] = 111;
+    a[c] = 222;
+    console.log(a[b]);
+    ```
+    :In JavaScript, using an object as a key in a normal object turns it into a string. That string is usually "[object Object]". So, two different objects like b and c become the same key -> a[b] = 111 & a[c] = 222 becomes a["[object Object]"] = 111 & a["[object Object]"] = 222. Hence, the second value (222) replaces the first one. 
+
+    12. <summary>
+    ```
+    function printName(firstName, lastName) {
+    firstName = "Aman";
+    lastName = "Bhoria";
+    return arguments[0] + " " + arguments[1];
+    }
+
+    let name = printName("John", "Doe");
+    console.log(name)
+    ```
+    
+    <details>
+    Output : Aman Bhoria
+    Reason :In non-strict mode, the arguments object (an array-like object) holds the values passed to the function. When you change the function parameters, the corresponding values in the arguments object are updated as well. In strict mode, this link is removed. As a result, function prints the original values that were passed.
+    </details>
+    </summary>

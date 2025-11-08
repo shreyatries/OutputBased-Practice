@@ -43,3 +43,18 @@ const user={
 var {firstName: fullName, country, lastName= 'Das', fullName= 'Bloom'}= user
 console.log(fullName)
 console.log(lastName)
+
+//-------------------------------------------------------------------------------------------------------------------------//
+
+function modify(obj){
+    obj.name= 'Bloom'
+}
+let person= {name: 'Shreya'}
+modify(person)
+console.log(person.name)
+
+function reassign(obj){
+    obj= {name: 'Shreya Das'}
+}
+reassign(person)
+console.log(person.name);
